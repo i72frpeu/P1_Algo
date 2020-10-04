@@ -1,31 +1,48 @@
 #include <iostream>
 #include <vector>
+#include <ctime>
+#include <cmath>
 #include "sistemaEcuaciones.cpp"
+#include "heapSort.hpp"
 
 using namespace std;
 
 int main(){
-    vector<vector<double>> matriz(2,vector<double>(2));
-    matriz[0][0] = 11;
-    matriz[0][1] = 3606.693;
-    matriz[1][0] = 3606.693;
-    matriz[1][1] = 1257202.607;
+    srand(time(NULL));
+    vector <int> v1;
+    vector <int> v2;
 
-    vector<vector<double>> b(2,vector<double> (1));
-    b[0][0] = 859.84;
-    b[1][0] = 298531.964;
+for(int i = 0; i < 10; i++){
+        v1.push_back(rand() % 100); 
+        v2.push_back(v1[i]);
+}
 
-    int n = 2;
+for(int i = 0; i < 10; i++){
+       std::cout<<v1[i]<<" ";
+}
 
-    vector<vector<double>> x(2,vector<double> (1));
+cout<<"\n";
 
-    resolverSistemaEcuaciones(matriz, b, n, x);
+for(int i = 0; i < 10; i++){
+       std::cout<<v2[i]<<" ";
+}
 
-    for(int i = 0; i < 2; i++){
-        for(int j = 0; j < 1; j++){
-            cout<<x[i][j]<<"  ";
-        }
-        cout<<"\n";
-    }
+cout<<"\n";
+
+quickSort(v1, 0, v1.size()-1);
+
+for(int i = 0; i < 10; i++){
+       std::cout<<v1[i]<<" ";
+}
+
+cout<<"\n";
+
+heapSort(v2);
+
+for(int i = 0; i < 10; i++){
+       std::cout<<v2[i]<<" ";
+}
+
+cout<<"\n";
 
 }

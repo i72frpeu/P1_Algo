@@ -20,8 +20,7 @@ int main(){
             break;
 
             case (2):
-                //determinanteIterativo();
-                std::cout<<"2\n";
+                determinanteIterativo();
             break;
 
             case (3):
