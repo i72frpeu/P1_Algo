@@ -22,15 +22,17 @@ void resolverSistemaEcuaciones(vector < vector < double > > A, vector < vector <
 	vector < vector < double > > inversa; //matriz inversa de la matriz de coeficientes que hay que calcular para resolver el sistema.
 	inversa = vector< vector< double > >(n, vector< double >(n)); //Matriz de N x N
 	
+	
 	//Inicializamos la matriz inversa
 	inicializarInversa(inversa);
 
 	//Se triangulariza la matriz por debajo de la diagonal
 	trianguloInferior(A, inversa);
+
 	
 	//Mostramos determinante
 	double determinante = productoDiagonal(A);
-	
+
 	if (fabs(determinante) < 0.0000000001) //Si el determinante es 0 no hay solución
 	{
 		exit(0);
@@ -43,6 +45,7 @@ void resolverSistemaEcuaciones(vector < vector < double > > A, vector < vector <
 	
 	//Se muestra la inversa
 	multiplicarMatrices(inversa, B, X);
+	
 }
 
 //Funcion para inicializar la matriz inversa que se inicializa con la matriz unidad

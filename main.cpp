@@ -24,8 +24,7 @@ int main(){
             break;
 
             case (3):
-                //determinanteRecursivo();
-                std::cout<<"3\n";
+                determinanteRecursivo();
             break;
     
             default:

@@ -3,9 +3,8 @@
 #include <cmath>
 #include <fstream>
 #include <iomanip>
-#include "ClaseTiempo.cpp"
 #include "heapSort.hpp"
-#include "sistemaEcuaciones.cpp"
+
 
 using namespace std;
 
@@ -13,9 +12,8 @@ void rellenarVector(vector<int> &v);
 void tiemposOrdenacionHeapSort(int nMin, int nMax, int repeticiones, int incremento, vector <double> &tiemposReales, vector <double> &numeroElementos);
 void almacenarFichero(vector <double> &tiemposReales, vector <double> &numeroElementos, vector <double> &tiemposEstimados);
 void ajusteNlogN(const vector <double> &n, vector <double> &tiemposReales, vector <double> &a);
-double sumatorio(vector <double> &n, vector <double> &t, int expN, int expT);
 void calcularTiemposEstimados(const vector <double> &n, const vector <double> &a, vector <double> &tiemposEstimados);
-double calcularCoeficienteDeterminacion(const vector <double> &tiemposReales, const vector <double> &tiemposEstimados);
+
 double calcularTiempoEstimadoNlogN(const double &n, vector <double> &a);
 
 void ordenacionHeapSort(){
@@ -144,48 +142,14 @@ void ajusteNlogN(const vector <double> &n, vector <double> &tiemposReales, vecto
 
 }
 
-double sumatorio(vector <double> &n, vector <double> &t, int expN, int expT){
-    double sum = 0;
-    if(expT == 0){
-        for(int i = 0; i < n.size(); i++){
-            sum = sum + pow(n[i],expN);
-        }
-    }else{
-        for(int i = 0; i < n.size(); i++){
-            sum = sum + (pow(t[i],expT) * pow(n[i], expN));
-        }
-    }
-}
 
 void calcularTiemposEstimados(const vector <double> &n, const vector <double> &a, vector <double> &tiemposEstimados){
     for(int i = 0; i < n.size(); i++){
-        tiemposEstimados.push_back(a[0] + a[1]*n[i]*log10(n[i])); 
+        tiemposEstimados.push_back(a[0] + (a[1]*n[i]*log10(n[i]))); 
     }
 }
 
-double calcularCoeficienteDeterminacion(const vector <double> &tiemposReales, const vector <double> &tiemposEstimados){
-    double media_tr = 0.0, media_te = 0.0, var_tr = 0.0, var_te = 0.0; 
-    int n = tiemposEstimados.size();
-
-    for(int i = 0; i < n; i++){
-        media_tr = media_tr + tiemposReales[i];
-        media_te = media_te + tiemposEstimados[i];
-    }
-
-    media_tr = media_tr/n;
-    media_te = media_te/n;
-
-    for(int i = 0; i < n; i++){
-        var_tr = var_tr + pow(tiemposReales[i] - media_tr, 2);
-        var_te = var_te + pow(tiemposEstimados[i] - media_te, 2);
-    }
-
-    var_tr = var_tr/n;
-    var_te = var_te/n;
-
-    return var_te/var_tr;
-}
 
 double calcularTiempoEstimadoNlogN(const double &n, vector <double> &a){
-    return (a[0] + a[1]*n*log10(n));
+    return (a[0] + (a[1]*n*log10(n)));
 }
