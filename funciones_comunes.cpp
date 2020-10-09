@@ -57,3 +57,11 @@ void rellenarMatrizAleatorio(vector<vector<double>> &A, int n){
         }
     }
 }
+
+void almacenarFichero(vector <double> &tiemposReales, vector <double> &numeroElementos,  vector <double> &tiempoEstimados){
+    ofstream f("tiempos.txt");
+    for(int i = 0; i < numeroElementos.size(); i++){
+        f<<numeroElementos[i]<<" "<<tiemposReales[i]<<" "<<tiempoEstimados[i]<<"\n";
+    }
+    f.close();
+}

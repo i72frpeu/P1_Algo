@@ -52,6 +52,10 @@ void determinanteRecursivo(){
     cout<<"El coeficiente de determinacion es "<<coef_det<<"\n";
     cout<<"La funcion de la curva ajustada es f(n) = "<<a_coef[0]<<" + "<<a_coef[1]<<"*n!"<<endl;
 
+    almacenarFichero(tiemposReales, numeroElementos, tiemposEstimados);
+
+    system("gnuplot crear_tabla_recursivo.sh");
+
     double control2 = -1;
 
     while(control2 == -1){

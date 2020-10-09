@@ -1,7 +1,6 @@
 #include <vector>
 #include <ctime>
 #include <cmath>
-#include <fstream>
 #include <iomanip>
 #include "heapSort.hpp"
 
@@ -10,7 +9,6 @@ using namespace std;
 
 void rellenarVector(vector<int> &v);
 void tiemposOrdenacionHeapSort(int nMin, int nMax, int repeticiones, int incremento, vector <double> &tiemposReales, vector <double> &numeroElementos);
-void almacenarFichero(vector <double> &tiemposReales, vector <double> &numeroElementos, vector <double> &tiemposEstimados);
 void ajusteNlogN(const vector <double> &n, vector <double> &tiemposReales, vector <double> &a);
 void calcularTiemposEstimados(const vector <double> &n, const vector <double> &a, vector <double> &tiemposEstimados);
 
@@ -43,7 +41,7 @@ void ordenacionHeapSort(){
 
     almacenarFichero(tiemposReales, numeroElementos, tiemposEstimado);
 
-    system("gnuplot crear_tabla.sh");
+    system("gnuplot crear_tabla_heapshort.sh");
 
     double control = -1;
 
@@ -92,13 +90,6 @@ void tiemposOrdenacionHeapSort(int nMin, int nMax, int repeticiones, int increme
     }
 }
 
-void almacenarFichero(vector <double> &tiemposReales, vector <double> &numeroElementos,  vector <double> &tiempoEstimados){
-    ofstream f("tiempos.txt");
-    for(int i = 0; i < numeroElementos.size(); i++){
-        f<<numeroElementos[i]<<" "<<tiemposReales[i]<<" "<<tiempoEstimados[i]<<"\n";
-    }
-    f.close();
-}
 
 void ajusteNlogN(const vector <double> &n, vector <double> &tiemposReales, vector <double> &a){
     vector<vector<double>> A(2, vector<double>(2));

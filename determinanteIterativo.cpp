@@ -52,6 +52,10 @@ void determinanteIterativo(){
 
     cout<<"La ecuacion de la curva es f(n) = "<<a_coef[0]<<" + "<<a_coef[1]<<"*n + "<<a_coef[2]<<"*n^2 + "<<a_coef[3]<<"*n^3"<<endl;
 
+    almacenarFichero(tiemposReales, numeroElementos, tiemposEstimados);
+
+    system("gnuplot crear_tabla_iterativo.sh");
+    
     double control2 = -1;
 
     while(control2 == -1){
